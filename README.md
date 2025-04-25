@@ -6,7 +6,7 @@
 
 ## 📋 Work Distribution
 - **Phase 1:** Ismail Alsalhi  
-- **Phase 2:** Abdulrahman Alqahtani  
+- **Phase 2:** Abdulrahman Alqhtani  
 - **Phase 3:** Ahmed Alzaidi  
 
 ---
@@ -16,5 +16,5 @@
 | Name                    | Student ID   |
 |-------------------------|--------------|
 | Ismail Alsalhi          | 202018240    |
-| Abdulrahman Alqahtani   | 202159310    |
+| Abdulrahman Alqhtani   | 202159310    |
 | Ahmed Alzaidi           | 202021520    |
