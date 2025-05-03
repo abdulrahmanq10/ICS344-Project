@@ -14,5 +14,5 @@ Disables anonymous login (critical for preventing unauthorized access).
 ### Step 2- Deploy Fail2Ban for Brute-Force Protection:
 Objective : Automatically block IPs after repeated failed login attempts.
 
-![p2](Screenshot_3/p2.png)
+![p2](pictures/Screenshot_3.png)
 
