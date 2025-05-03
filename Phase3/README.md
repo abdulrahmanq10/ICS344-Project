@@ -11,10 +11,8 @@ Edit /etc/vsftpd.conf:
 anonymous_enable=NO  
 Disables anonymous login (critical for preventing unauthorized access).
 
+### Step 2- Deploy Fail2Ban for Brute-Force Protection:
+Objective : Automatically block IPs after repeated failed login attempts.
 
-### 1- Disable Anonymous FTP Login:
-![p1](pictures/Screenshot_2.png)
-
-### 2- Installing the Splunk Server Package:
-![p2](pictures/p2.png)
+![p2](Screenshot_3/p2.png)
 
