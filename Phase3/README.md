@@ -14,5 +14,13 @@ Disables anonymous login (critical for preventing unauthorized access).
 ### Step 2- Deploy Fail2Ban for Brute-Force Protection:
 Objective : Automatically block IPs after repeated failed login attempts.
 
+1. Install Fail2ban:
 ![p2](pictures/Screenshot_3.png)
 
+2. Create a Custom Jail Configuration :
+
+Edit /etc/fail2ban/jail.d/vsftpd.conf:
+
+![p3](pictures/Screenshot_4.png)
+
+Blocks IPs after 5 failed attempts for 1 hour.
