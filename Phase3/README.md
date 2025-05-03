@@ -4,10 +4,14 @@
 Objective : Prevent unauthorized access via anonymous FTP login.
 sudo apt-get install vsftpd
 This replaces the default FTP service (proftpd) with vsftpd, a more secure alternative.
-SCREENSHOT#1
+![p1](pictures/Screenshot_2.png)
+Modify vsftpd Configuration :
+Edit /etc/vsftpd.conf:
+anonymous_enable=NO  
+Disables anonymous login (critical for preventing unauthorized access).
 
 
-### 1- Download Splunk Server .deb Package:
+### 1- Disable Anonymous FTP Login:
 ![p1](pictures/Screenshot_2.png)
 
 ### 2- Installing the Splunk Server Package:
