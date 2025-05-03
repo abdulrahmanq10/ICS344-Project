@@ -69,10 +69,7 @@ Exploit Fails : No session created (no backdoor listener on port 6200).
 
 Output : No active connections on port 6200.
 
-## Step 6-Validate Splunk Integration:
-Objective : Ensure logs from the victim machine are forwarded to Splunk.
-Splunk Dashboard :
-Shows successful and failed login attempts from the victim machine.
-
-![p8](pictures/Screenshot_9.png)
+That’s t the FTP server asking for a valid password—because anonymous logins are disabled, there is no “anonymous” welcome shell. Metasploit still tries to log in (and prompts you to set the PASS option), but even if you supplied a password it won’t open a backdoor shell.
+“Exploit completed, but no session was created.”
+the module ran, but there was nothing for it to hook into—no port 6200 listener, no shell.
 
