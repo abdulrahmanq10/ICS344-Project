@@ -73,4 +73,4 @@ The FTP service was chosen because it allows multiple login attempts, making it 
 ### 3.2 Custom Brute-Force Script
 
 A Python script using `ftplib` was also used to automate login attempts:
-
+![Figure 3: Nmap Scan Results](image/Picture5.png)
