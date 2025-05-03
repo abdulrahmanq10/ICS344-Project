@@ -27,7 +27,7 @@
 To identify open services on the victim, we ran:
 
 ```bash
-nmap -sV 10.0.2.7
+nmap 10.0.2.7
 ```
 
 * Key findings: FTP (port 21/tcp), SSH (22/tcp), HTTP (80/tcp), etc.
