@@ -26,7 +26,11 @@ a.	Using msfconsole tool
 
 
 b.	Using script:
+
+
 ![My Diagram](image/Picture5.png)
- 
+
+
+![My Diagram](image/b175ee04-b93f-44c5-804e-a121170c0c67.jpg)
 
  
