@@ -8,7 +8,7 @@ SCREENSHOT#1
 
 
 ### 1- Download Splunk Server .deb Package:
-![p1](pictures/p1.png)
+![p1](pictures/Screenshot_2.png)
 
 ### 2- Installing the Splunk Server Package:
 ![p2](pictures/p2.png)
