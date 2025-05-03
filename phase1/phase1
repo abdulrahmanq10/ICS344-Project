@@ -1,1 +1,25 @@
 
+1-IP addresses of attacking and victim machines
+Kali
+![My Diagram](images/diagram.png)
+
+Matasploitable:
+ 
+1-Selected Vulnerable Service
+First, we use ‘nmap’ to see which services the victim is running.
+ 
+After several trials we selected FTP service to compromise. FTP service allows multiple login attempts, making it susceptible to brute-force attacks.
+2-Attack execution
+a.	Using msfconsole tool
+ 
+
+
+
+
+
+
+b.	Using script:
+ 
+
+ 
+
