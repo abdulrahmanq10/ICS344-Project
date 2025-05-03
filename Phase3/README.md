@@ -5,6 +5,7 @@ Objective : Prevent unauthorized access via anonymous FTP login.
 sudo apt-get install vsftpd
 This replaces the default FTP service (proftpd) with vsftpd, a more secure alternative.
 ![p1](pictures/Screenshot_2.png)
+
 Modify vsftpd Configuration :
 Edit /etc/vsftpd.conf:
 anonymous_enable=NO  
